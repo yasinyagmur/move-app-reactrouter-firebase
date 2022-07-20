@@ -12,6 +12,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { signIn } from "../auth/firebase";
 
 function Copyright(props) {
   return (
@@ -44,8 +45,8 @@ export default function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(email, password);
-
+    // console.log(email, password);
+    signIn(email,password,navigate)
   };
 
   return (
@@ -110,7 +111,7 @@ export default function Login() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/register" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
