@@ -47,8 +47,10 @@ export default function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const displayName=`
+    ${firstName} ${lastName}`
     // console.log(firstName, lastName);
-    createUser(email,password,navigate)
+    createUser(email,password,navigate,displayName)
   };
 
   return (

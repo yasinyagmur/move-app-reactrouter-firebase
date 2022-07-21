@@ -8,13 +8,17 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import Link from "@mui/material/Link";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import { logOut } from "../../auth/firebase";
+import { Typography } from "@mui/material";
 
-export default function MenuAppBar() {
+export default function Navbar() {
   const navigate = useNavigate();
-
-  const [auth, setAuth] = React.useState(true);
+  const { currentUser } = useContext(AuthContext);
+  // const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+console.log(currentUser)
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -35,8 +39,9 @@ export default function MenuAppBar() {
           >
             React Movie App
           </Link>
+          <Typography>{currentUser.displayName}</Typography>
 
-          {auth ? (
+          {!currentUser ? (
             <div>
               <IconButton
                 size="large"
@@ -96,7 +101,7 @@ export default function MenuAppBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={() => navigate("/")}>Logout</MenuItem>
+                <MenuItem onClick={() => logOut()}>Logout</MenuItem>
               </Menu>
             </div>
           )}
