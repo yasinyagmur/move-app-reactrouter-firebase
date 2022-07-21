@@ -12,7 +12,9 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { signIn } from "../auth/firebase";
+import { signIn, signUpProvider } from "../auth/firebase";
+import Stack from "@mui/material/Stack";
+import GoogleIcon from "@mui/icons-material/Google";
 
 function Copyright(props) {
   return (
@@ -46,8 +48,12 @@ export default function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // console.log(email, password);
-    signIn(email,password,navigate)
+    signIn(email, password, navigate);
   };
+
+  const handleProviderLogin=()=>{
+    signUpProvider(navigate)
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -61,7 +67,7 @@ export default function Login() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <Avatar sx={{ m: 1, bgcolor: "green" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -118,7 +124,12 @@ export default function Login() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        <Stack spacing={2} direction="row">
+          <Button variant="outlined" fullWidth sx={{ mt: "1rem" }} onClick={handleProviderLogin}>
+          <GoogleIcon sx={{marginRight:"1rem"}}/>Continue with Google
+          </Button>
+        </Stack>
+        <Copyright sx={{ mt: 5, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );

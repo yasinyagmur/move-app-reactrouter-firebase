@@ -12,7 +12,9 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { createUser } from "../auth/firebase";
+import { createUser, signUpProvider } from "../auth/firebase";
+import Stack from "@mui/material/Stack";
+import GoogleIcon from "@mui/icons-material/Google";
 
 function Copyright(props) {
   return (
@@ -47,10 +49,13 @@ export default function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const displayName=`
-    ${firstName} ${lastName}`
+    const displayName = `
+    ${firstName} ${lastName}`;
     // console.log(firstName, lastName);
-    createUser(email,password,navigate,displayName)
+    createUser(email, password, navigate, displayName);
+  };
+  const handleProviderLogin = () => {
+    signUpProvider(navigate);
   };
 
   return (
@@ -65,7 +70,7 @@ export default function Register() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <Avatar sx={{ m: 1, bgcolor: "green" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -148,6 +153,17 @@ export default function Register() {
             </Grid>
           </Box>
         </Box>
+        <Stack spacing={2} direction="row">
+          <Button
+            variant="outlined"
+            fullWidth
+            sx={{ mt: "1rem" }}
+            onClick={handleProviderLogin}
+          >
+            <GoogleIcon sx={{ marginRight: "1rem" }} />
+            Continue with Google
+          </Button>
+        </Stack>
         <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
