@@ -140,10 +140,20 @@ export default function Register() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 1.3 }}
             >
               Register
             </Button>
+            <Stack spacing={2} direction="row">
+              <Button
+                variant="outlined"
+                fullWidth
+                onClick={handleProviderLogin}
+              >
+                <GoogleIcon sx={{ marginRight: "1rem" }} />
+                Continue with Google
+              </Button>
+            </Stack>
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/login" variant="body2">
@@ -153,17 +163,7 @@ export default function Register() {
             </Grid>
           </Box>
         </Box>
-        <Stack spacing={2} direction="row">
-          <Button
-            variant="outlined"
-            fullWidth
-            sx={{ mt: "1rem" }}
-            onClick={handleProviderLogin}
-          >
-            <GoogleIcon sx={{ marginRight: "1rem" }} />
-            Continue with Google
-          </Button>
-        </Stack>
+
         <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>

@@ -51,9 +51,9 @@ export default function Login() {
     signIn(email, password, navigate);
   };
 
-  const handleProviderLogin=()=>{
-    signUpProvider(navigate)
-  }
+  const handleProviderLogin = () => {
+    signUpProvider(navigate);
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -106,10 +106,20 @@ export default function Login() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 1.3 }}
             >
               Login
             </Button>
+            <Stack spacing={2} direction="row">
+              <Button
+                variant="outlined"
+                fullWidth
+                onClick={handleProviderLogin}
+              >
+                <GoogleIcon sx={{ marginRight: "1rem" }} />
+                Continue with Google
+              </Button>
+            </Stack>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
@@ -124,11 +134,7 @@ export default function Login() {
             </Grid>
           </Box>
         </Box>
-        <Stack spacing={2} direction="row">
-          <Button variant="outlined" fullWidth sx={{ mt: "1rem" }} onClick={handleProviderLogin}>
-          <GoogleIcon sx={{marginRight:"1rem"}}/>Continue with Google
-          </Button>
-        </Stack>
+
         <Copyright sx={{ mt: 5, mb: 4 }} />
       </Container>
     </ThemeProvider>
