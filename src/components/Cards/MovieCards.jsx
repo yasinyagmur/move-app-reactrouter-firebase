@@ -7,7 +7,7 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 import "./MovieCards.css";
 import { Box } from "@mui/system";
 import { AuthContext } from "../../context/AuthContext";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const IMG_API = "https://image.tmdb.org/t/p/w1280";
 const defaultImage =
@@ -21,10 +21,13 @@ export default function MovieCards({
   id,
 }) {
   const { currentUser } = React.useContext(AuthContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
-    <Box className="Cards" onClick={()=>navigate("/details/"+id)}>
+    <Box
+      sx={{ display: "inline-flex", margin: "1rem", maxWidth: "20rem" }}
+      onClick={() => navigate("/details/" + id)}
+    >
       <Card sx={{ maxWidth: 345, margin: "auto" }}>
         <CardActionArea>
           <CardMedia
@@ -44,7 +47,7 @@ export default function MovieCards({
             </Typography>
 
             <Typography
-              className="overview"
+              sx={{ maxHeight: "4.4rem", overflow: "hidden" }}
               variant="body1"
               color="text.primary"
             >
@@ -53,7 +56,7 @@ export default function MovieCards({
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" >Movie Detail</Button>
+          <Button size="small">Movie Detail</Button>
           {currentUser ? (
             <Typography
               variant="h5"
@@ -72,4 +75,3 @@ export default function MovieCards({
     </Box>
   );
 }
-
