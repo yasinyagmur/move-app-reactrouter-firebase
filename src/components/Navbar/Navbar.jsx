@@ -18,7 +18,7 @@ export default function Navbar() {
   const { currentUser } = useContext(AuthContext);
   // const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
-console.log(currentUser)
+// console.log(currentUser)
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };

@@ -4,7 +4,6 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
-import "./MovieCards.css";
 import { Box } from "@mui/system";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -27,9 +26,7 @@ export default function MovieCards({
   return (
     <Box
       sx={{ display: "inline-flex", margin: "1rem", maxWidth: "20rem" }}
-      onClick={() => {
-        navigate("/details/" + id); !currentUser && toastWarnNotify("Please log in to see detail");
-      }}
+     
     >
       <Card sx={{ maxWidth: 345, margin: "auto" }}>
         <CardActionArea>
@@ -59,7 +56,9 @@ export default function MovieCards({
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small">Movie Detail</Button>
+          <Button  onClick={() => {
+        navigate("/details/" + id); !currentUser && toastWarnNotify("Please log in to see detail");
+      }} size="small">Movie Detail</Button>
           {currentUser ? (
             <Typography
               variant="h5"
