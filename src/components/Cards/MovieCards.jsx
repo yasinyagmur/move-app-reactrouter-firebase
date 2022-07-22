@@ -24,7 +24,7 @@ export default function MovieCards({
   const navigate = useNavigate();
 
   return (
-    <Box sx={{ display: "inline-flex", margin: "1rem", maxWidth: "20rem" }}>
+    <Box sx={{ display: "inline-flex", margin: "1rem", maxWidth: "15rem" }}>
       <Card sx={{ maxWidth: 345, margin: "auto" }}>
         <CardActionArea>
           <CardMedia
@@ -33,9 +33,9 @@ export default function MovieCards({
             image={poster_path ? IMG_API + poster_path : defaultImage}
             alt={title}
           />
-          <CardContent>
+          <CardContent sx={{height:"12rem"}}>
             <Typography
-              sx={{ height: "2rem" }}
+              sx={{ minHeight:"maxContent" }}
               gutterBottom
               variant="h5"
               component="div"
