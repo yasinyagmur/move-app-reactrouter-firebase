@@ -8,6 +8,7 @@ import "./MovieCards.css";
 import { Box } from "@mui/system";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { toastWarnNotify } from "../../helpers/ToastNotify";
 
 const IMG_API = "https://image.tmdb.org/t/p/w1280";
 const defaultImage =
@@ -26,7 +27,9 @@ export default function MovieCards({
   return (
     <Box
       sx={{ display: "inline-flex", margin: "1rem", maxWidth: "20rem" }}
-      onClick={() => navigate("/details/" + id)}
+      onClick={() => {
+        navigate("/details/" + id); !currentUser && toastWarnNotify("Please log in to see detail");
+      }}
     >
       <Card sx={{ maxWidth: 345, margin: "auto" }}>
         <CardActionArea>
