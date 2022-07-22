@@ -37,13 +37,22 @@ const MovieDetails = () => {
     <div>
       <Card
         sx={{
-          maxWidth: "90%",
-          height: "70vh",
+          maxWidth: "75%",
+          // height: "55vh",
           margin: "auto",
-          marginTop: "3rem",
+          marginTop: "2rem",
         }}
       >
         <CardActionArea sx={{ display: "flex", padding: "3rem" }}>
+          
+          <CardMedia
+            component="img"
+            height="400px"
+            image={poster_path ? baseImageUrl + poster_path : defaultImage}
+            alt={title}
+            sx={{ objectFit: "contain" }}
+          />
+          <CardContent>
           <Typography
             gutterBottom
             variant="h5"
@@ -52,14 +61,6 @@ const MovieDetails = () => {
           >
             {title}
           </Typography>
-          <CardMedia
-            component="img"
-            height="345px"
-            image={poster_path ? baseImageUrl + poster_path : defaultImage}
-            alt={title}
-            sx={{ objectFit: "contain" }}
-          />
-          <CardContent>
             <Typography variant="h6" color="text.secondary">
               Overwiew
             </Typography>

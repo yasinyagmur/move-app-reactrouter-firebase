@@ -24,10 +24,7 @@ export default function MovieCards({
   const navigate = useNavigate();
 
   return (
-    <Box
-      sx={{ display: "inline-flex", margin: "1rem", maxWidth: "20rem" }}
-     
-    >
+    <Box sx={{ display: "inline-flex", margin: "1rem", maxWidth: "20rem" }}>
       <Card sx={{ maxWidth: 345, margin: "auto" }}>
         <CardActionArea>
           <CardMedia
@@ -56,9 +53,15 @@ export default function MovieCards({
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button  onClick={() => {
-        navigate("/details/" + id); !currentUser && toastWarnNotify("Please log in to see detail");
-      }} size="small">Movie Detail</Button>
+          <Button
+            onClick={() => {
+              navigate("/details/" + id);
+              !currentUser && toastWarnNotify("Please log in to see detail");
+            }}
+            size="small"
+          >
+            Movie Detail
+          </Button>
           {currentUser ? (
             <Typography
               variant="h5"

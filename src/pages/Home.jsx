@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import { Container } from "@mui/system";
 import MovieCards from "../components/Cards/MovieCards";
 import axios from "axios";
-import { Button, ImageListItem } from "@mui/material";
+import { Button, Grid, ImageListItem } from "@mui/material";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
@@ -16,7 +16,7 @@ const Home = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
-const{currentUser}=useContext(AuthContext)
+  const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
     getMovies(FEATURED_API);
@@ -32,13 +32,13 @@ const{currentUser}=useContext(AuthContext)
   };
 
   const handleSearchClick = () => {
-    if(search&& currentUser){
-    getMovies(SEARCH_API + search)
-  }else if(!currentUser){
-    alert("login değilsin")
-  }else{
-    alert("film giriniz")
-  }
+    if (search && currentUser) {
+      getMovies(SEARCH_API + search);
+    } else if (!currentUser) {
+      alert("login değilsin");
+    } else {
+      alert("film giriniz");
+    }
   };
 
   return (
@@ -66,6 +66,7 @@ const{currentUser}=useContext(AuthContext)
             height: "3.5rem",
             width: "7rem",
             mt: 3,
+            marginLeft:"0.5rem"
           }}
           size="large"
           onClick={handleSearchClick}
@@ -73,14 +74,23 @@ const{currentUser}=useContext(AuthContext)
           Search
         </Button>
       </Container>
-
-      {loading ? (
-        <ImageListItem>
-          <img src="../assets/loading.gif" alt="loadinggif" loading="lazy" />
-        </ImageListItem>
-      ) : (
-        movies?.map((movie) => <MovieCards key={movie.id} {...movie} />)
-      )}
+      <Container>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            {loading ? (
+              <ImageListItem>
+                <img
+                  src="../assets/loading.gif"
+                  alt="loadinggif"
+                  loading="lazy"
+                />
+              </ImageListItem>
+            ) : (
+              movies?.map((movie) => <MovieCards key={movie.id} {...movie} />)
+            )}
+          </Grid>
+        </Grid>
+      </Container>
     </>
   );
 };
