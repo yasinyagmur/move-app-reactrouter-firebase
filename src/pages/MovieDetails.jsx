@@ -6,11 +6,14 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
+import { CardActionArea, Container } from "@mui/material";
+import VideoSection from "../components/Video/VideoSection";
 
 const MovieDetails = () => {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState({});
+  const [videoKey, setVideoKey] = useState();
+
   const {
     title,
     poster_path,
@@ -25,13 +28,18 @@ const MovieDetails = () => {
   const baseImageUrl = "https://image.tmdb.org/t/p/w1280";
   const defaultImage =
     "https://images.unsplash.com/photo-1581905764498-f1b60bae941a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80";
+  const videoUrl = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`;
 
   useEffect(() => {
     axios
       .get(movieDetailBaseUrl)
       .then((res) => setMovieDetails(res.data))
       .catch((err) => console.log(err));
-  }, [movieDetailBaseUrl]);
+    axios
+      .get(videoUrl)
+      .then((res) => setVideoKey(res.data.results[0].key))
+      .catch((err) => console.log(err));
+  }, [movieDetailBaseUrl, videoUrl]);
 
   return (
     <div>
@@ -40,11 +48,10 @@ const MovieDetails = () => {
           maxWidth: "75%",
           margin: "auto",
           marginTop: "2rem",
-          bgcolor: "#f4f2f2"
+          bgcolor: "#f4f2f2",
         }}
       >
         <CardActionArea sx={{ display: "flex", padding: "3rem" }}>
-          
           <CardMedia
             component="img"
             height="400px"
@@ -53,14 +60,14 @@ const MovieDetails = () => {
             sx={{ objectFit: "contain" }}
           />
           <CardContent>
-          <Typography
-            gutterBottom
-            variant="h5"
-            component="div"
-            sx={{ textAlign: "center", padding: "2rem" }}
-          >
-            {title}
-          </Typography>
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="div"
+              sx={{ textAlign: "center", padding: "2rem" }}
+            >
+              {title}
+            </Typography>
             <Typography variant="h6" color="text.secondary">
               Overwiew
             </Typography>
@@ -76,6 +83,9 @@ const MovieDetails = () => {
             <Typography variant="h6" color="text.secondary">
               {"Total Vote : " + vote_count}
             </Typography>
+            <Container>
+            {videoKey && <VideoSection videoKey={videoKey} />}
+            </Container>
             <Link to={-1}>Go Back</Link>
           </CardContent>
         </CardActionArea>
