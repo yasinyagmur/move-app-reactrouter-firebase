@@ -7,6 +7,7 @@ import axios from "axios";
 import { Button, Grid, ImageListItem } from "@mui/material";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import {  toastWarnNotify } from "../helpers/ToastNotify";
 
 const API_KEY = process.env.REACT_APP_TMDB_KEY;
 const FEATURED_API = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
@@ -34,10 +35,8 @@ const Home = () => {
   const handleSearchClick = () => {
     if (search && currentUser) {
       getMovies(SEARCH_API + search);
-    } else if (!currentUser) {
-      alert("login değilsin");
     } else {
-      alert("film giriniz");
+      toastWarnNotify("Please enter the movie you want to search");
     }
   };
 

@@ -101,7 +101,7 @@ export default function Navbar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={() => logOut()}>Logout</MenuItem>
+                <MenuItem onClick={() => logOut(navigate)}>Logout</MenuItem>
               </Menu>
             </div>
           )}

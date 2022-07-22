@@ -38,9 +38,9 @@ const MovieDetails = () => {
       <Card
         sx={{
           maxWidth: "75%",
-          // height: "55vh",
           margin: "auto",
           marginTop: "2rem",
+          bgcolor: "#f4f2f2"
         }}
       >
         <CardActionArea sx={{ display: "flex", padding: "3rem" }}>

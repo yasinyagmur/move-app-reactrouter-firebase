@@ -83,7 +83,8 @@ export const userObserver = (setCurrentUser) => {
   });
 };
 
-export const logOut = () => {
+export const logOut = (navigate) => {
+  navigate("/")
   signOut(auth);
 };
 
