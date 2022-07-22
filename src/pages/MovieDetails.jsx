@@ -83,9 +83,7 @@ const MovieDetails = () => {
             <Typography variant="h6" color="text.secondary">
               {"Total Vote : " + vote_count}
             </Typography>
-            <Container>
             {videoKey && <VideoSection videoKey={videoKey} />}
-            </Container>
             <Link to={-1}>Go Back</Link>
           </CardContent>
         </CardActionArea>
