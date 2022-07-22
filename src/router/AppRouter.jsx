@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import { AuthContext } from "../context/AuthContext";
+import Footer from "../pages/Footer";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import MovieDetails from "../pages/MovieDetails";
@@ -30,6 +31,7 @@ const AppRouter = () => {
             <Route path=""element={<MovieDetails />} />
           </Route>
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </div>
   );
