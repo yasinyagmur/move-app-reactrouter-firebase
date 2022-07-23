@@ -13,6 +13,7 @@ const MovieDetails = () => {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState({});
   const [videoKey, setVideoKey] = useState();
+  // const isActive = useMediaQuery("(max-width:600px)");
 
   const {
     title,
@@ -46,19 +47,19 @@ const MovieDetails = () => {
       <Card
         sx={{
           maxWidth: "65%",
-          height:"100vh",
+          height: "100vh",
           margin: "auto",
           marginTop: "2rem",
           bgcolor: "#f4f2f2",
         }}
       >
-        <CardActionArea >
+        <CardActionArea>
           <CardMedia
             component="img"
             height="400px"
             image={poster_path ? baseImageUrl + poster_path : defaultImage}
             alt={title}
-            sx={{ objectFit: "contain",marginTop:"2rem" }}
+            sx={{ objectFit: "contain", marginTop: "2rem" }}
           />
           <CardContent>
             <Typography
