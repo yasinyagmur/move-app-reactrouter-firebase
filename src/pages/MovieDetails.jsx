@@ -45,19 +45,20 @@ const MovieDetails = () => {
     <div>
       <Card
         sx={{
-          maxWidth: "75%",
+          maxWidth: "65%",
+          height:"100vh",
           margin: "auto",
           marginTop: "2rem",
           bgcolor: "#f4f2f2",
         }}
       >
-        <CardActionArea sx={{ display: "flex", padding: "3rem" }}>
+        <CardActionArea >
           <CardMedia
             component="img"
             height="400px"
             image={poster_path ? baseImageUrl + poster_path : defaultImage}
             alt={title}
-            sx={{ objectFit: "contain" }}
+            sx={{ objectFit: "contain",marginTop:"2rem" }}
           />
           <CardContent>
             <Typography

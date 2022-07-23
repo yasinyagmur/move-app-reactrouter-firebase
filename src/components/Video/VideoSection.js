@@ -1,19 +1,15 @@
-import React from 'react';
+import { Box } from "@mui/material";
+import * as React from "react";
 
 const VideoSection = ({ videoKey }) => {
   return (
-    <div className="card w-75 m-auto my-3">
-      <div className="card-body">
-        <div className="ratio ratio-16x9">
-          <iframe
-            src={`https://www.youtube.com/embed/${videoKey}?autoplay=1&mute=1`}
-            title="YouTube video"
-            allowFullScreen
-          ></iframe>
-        </div>
-      </div>
-    </div>
+    <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <iframe
+        src={`https://www.youtube.com/embed/${videoKey}?autoplay=1&mute=1`}
+        title="YouTube video"
+        allowFullScreen
+      ></iframe>
+    </Box>
   );
 };
-
 export default VideoSection;
