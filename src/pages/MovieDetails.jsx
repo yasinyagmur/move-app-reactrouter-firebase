@@ -47,9 +47,10 @@ const MovieDetails = () => {
       <Card
         sx={{
           maxWidth: "65%",
-          height: "100vh",
+          height: "auto",
           margin: "auto",
           marginTop: "2rem",
+          marginBottom:"5rem",
           bgcolor: "#f4f2f2",
         }}
       >
