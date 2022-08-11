@@ -5,14 +5,15 @@ export const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = React.useState(false);
-useEffect(() => {
-// setCurrentUser(JSON.parse(sessionStorage.getItem("user")))
-userObserver(setCurrentUser)
-}, [])
-
+  useEffect(() => {
+    // setCurrentUser(JSON.parse(sessionStorage.getItem("user")))
+    userObserver(setCurrentUser);
+  }, []);
 
   return (
-    <AuthContext.Provider value={{currentUser}}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ currentUser }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 
